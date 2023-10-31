@@ -1,5 +1,7 @@
 import { useState, useRef, useEffect } from "react";
 import axios from "axios";
+import Status from "./Status";
+import Result from "./Result";
 
 const assemblyAPI = axios.create({
   baseURL: "https://api.assemblyai.com/v2",
@@ -112,6 +114,9 @@ const AudioRecorder = () => {
     const { data } = await assemblyAPI.post("/transcript", {
       audio_url: uploadResponse.upload_url,
       //features
+      sentiment_analysis: true,
+      entity_detection: true,
+      iab_categories: true,
     });
     setTranscript({ id: data.id });
   };
@@ -119,9 +124,11 @@ const AudioRecorder = () => {
   return (
     <div>
       <div>
-        {transcript.text && transcript.status === "completed"
-          ? transcript.text
-          : "...is Loading"}
+        {transcript.text && transcript.status === "completed" ? (
+          <Result transcript={transcript} />
+        ) : (
+          <Status isLoading={isLoading} status={transcript.status} />
+        )}
       </div>
       <h2>Audio Recorder</h2>
       <main>
