@@ -17,7 +17,6 @@ const Highlighted = ({ text, sentiment, entities }) => {
         color: `${sentimentColor[sentiment]}`,
         display: "inline",
       }}>
-      {console.log(sentimentColor[sentiment])}
       {parts.map((part) => {
         const matchingEntity = entities.find((e) => e.text === part);
 
