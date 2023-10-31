@@ -11,7 +11,13 @@ const Topics = ({ transcript }) => {
           .map((topic) => (
             <span
               key={transcript.iab_categories_result.summary[topic]}
-              style={{ fontSize: "small", backgroundColor: "blueviolet" }}>
+              style={{
+                fontSize: "small",
+                backgroundColor: "blueviolet",
+                paddingInline: "0.25rem",
+                borderRadius: "10px",
+                marginInline: "0.5  rem",
+              }}>
               {topic.split(">").pop()}
             </span>
           ))}

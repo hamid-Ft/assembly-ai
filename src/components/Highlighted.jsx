@@ -2,7 +2,7 @@
 const sentimentColor = {
   POSITIVE: "lightgreen",
   NEGATIVE: "pink",
-  NEUTRAL: "lightgry",
+  NEUTRAL: "lightgray",
 };
 
 const Highlighted = ({ text, sentiment, entities }) => {
@@ -12,7 +12,12 @@ const Highlighted = ({ text, sentiment, entities }) => {
   const entityText = entities.map((e) => e.text);
   const parts = text.split(new RegExp(`(${entityText.join("|")})`, "g"));
   return (
-    <div style={{ backgroundColor: `${sentimentColor[sentiment]}` }}>
+    <div
+      style={{
+        color: `${sentimentColor[sentiment]}`,
+        display: "inline",
+      }}>
+      {console.log(sentimentColor[sentiment])}
       {parts.map((part) => {
         const matchingEntity = entities.find((e) => e.text === part);
 

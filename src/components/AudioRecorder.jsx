@@ -153,7 +153,7 @@ const AudioRecorder = () => {
           <div
             style={{ display: "flex", flexDirection: "column", gap: "2rem" }}>
             {audio.map((aud, index) => (
-              <div key={index}>
+              <div key={index} style={{ display: "flex", gap: "2rem" }}>
                 <button type="button" onClick={() => handleUploadAudio(index)}>
                   Upload
                 </button>
