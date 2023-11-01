@@ -6,7 +6,7 @@ const Topics = ({ transcript }) => {
       <div>
         {Object.keys(transcript.iab_categories_result.summary)
           .filter(
-            (topic) => transcript.iab_categories_result.summary[topic] > 0.6
+            (topic) => transcript.iab_categories_result.summary[topic] > 0.7
           )
           .map((topic) => (
             <span

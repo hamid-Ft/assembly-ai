@@ -117,6 +117,7 @@ const AudioRecorder = () => {
       sentiment_analysis: true,
       entity_detection: true,
       iab_categories: true,
+      speaker_labels: true,
     });
     setTranscript({ id: data.id });
   };

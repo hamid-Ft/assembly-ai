@@ -1,5 +1,6 @@
 import Highlighted from "./Highlighted";
 import Topics from "./Topics";
+import Speakers from "./Speakers";
 
 /* eslint-disable react/prop-types */
 const Result = ({ transcript }) => {
@@ -15,6 +16,7 @@ const Result = ({ transcript }) => {
           />
         ))}
       </p>
+      <Speakers transcript={transcript} />
       <Topics transcript={transcript} />
     </div>
   );
