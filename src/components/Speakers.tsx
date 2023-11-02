@@ -1,4 +1,5 @@
-/* eslint-disable react/prop-types */
+import React from "react";
+
 const Speakers = ({ transcript }) => {
   return (
     <div>

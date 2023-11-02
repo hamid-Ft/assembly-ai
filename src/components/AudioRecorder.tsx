@@ -2,6 +2,8 @@ import { useState, useRef, useEffect } from "react";
 import axios from "axios";
 import Status from "./Status";
 import Result from "./Result";
+import React from "react";
+import "../types/asyncapi";
 
 const assemblyAPI = axios.create({
   baseURL: "https://api.assemblyai.com/v2",
@@ -15,20 +17,15 @@ const mimeType = "audio/webm";
 
 const AudioRecorder = () => {
   const [permission, setPermission] = useState(false);
-
-  const mediaRecorder = useRef(null);
-
+  const mediaRecorder = useRef<MediaRecorder | undefined>();
   const [recordingStatus, setRecordingStatus] = useState("inactive");
-
-  const [stream, setStream] = useState(null);
-
-  const [audio, setAudio] = useState([]);
-
-  const [audioChunks, setAudioChunks] = useState([]);
-
+  const [stream, setStream] = useState(new MediaStream());
+  /**  @description  { url: string; blob: Blob[] }[] */
+  const [audio, setAudio] = useState<any>([]);
+  const [audioChunks, setAudioChunks] = useState<Blob[]>();
   const [isLoading, setIsLoading] = useState(false);
-
-  const [transcript, setTranscript] = useState({ id: "" });
+  /** @details @problem must infer from assemblyAi itself ... ?! */
+  const [transcript, setTranscript] = useState<any>({ id: "" });
 
   const getMicrophonePermission = async () => {
     if ("MediaRecorder" in window) {
@@ -48,33 +45,29 @@ const AudioRecorder = () => {
 
   const startRecording = async () => {
     setRecordingStatus("recording");
-    const media = new MediaRecorder(stream, { type: mimeType });
-
+    const media = new MediaRecorder(stream, {
+      mimeType: mimeType,
+    });
     mediaRecorder.current = media;
-
     mediaRecorder.current.start();
 
-    let localAudioChunks = [];
+    let localAudioChunks: Blob[] = [];
 
     mediaRecorder.current.ondataavailable = (event) => {
       if (typeof event.data === "undefined") return;
       if (event.data.size === 0) return;
       localAudioChunks.push(event.data);
     };
-
     setAudioChunks(localAudioChunks);
   };
 
   const stopRecording = () => {
     setRecordingStatus("inactive");
-    mediaRecorder.current.stop();
-
-    mediaRecorder.current.onstop = () => {
+    mediaRecorder.current?.stop();
+    mediaRecorder.current!.onstop = () => {
       const audioBlob = new Blob(audioChunks, { type: mimeType });
       const audioUrl = URL.createObjectURL(audioBlob);
-
       setAudio((audio) => [...audio, { url: audioUrl, blob: audioBlob }]);
-
       setAudioChunks([]);
     };
   };
@@ -99,14 +92,13 @@ const AudioRecorder = () => {
   }, [isLoading, transcript]);
 
   const handleRemoveAudio = (index) => {
-    const updatedAudio = [...audio];
-    updatedAudio.splice(index, 1);
+    const updatedAudio = audio?.splice(0);
+    updatedAudio?.splice(index, 1);
     setAudio(updatedAudio);
   };
-  const handleUploadAudio = async (index) => {
-    const selectedAudio = audio[index]?.blob;
+  const handleUploadAudio = async (index: number) => {
+    const selectedAudio = audio![index]?.blob;
     setIsLoading(true);
-
     const { data: uploadResponse } = await assemblyAPI.post(
       "/upload",
       selectedAudio
@@ -158,9 +150,7 @@ const AudioRecorder = () => {
                 <button type="button" onClick={() => handleUploadAudio(index)}>
                   Upload
                 </button>
-
                 <audio key={index} src={aud.url} controls></audio>
-
                 <button type="button" onClick={() => handleRemoveAudio(index)}>
                   Remove
                 </button>

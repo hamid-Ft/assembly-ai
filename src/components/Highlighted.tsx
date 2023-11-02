@@ -1,4 +1,5 @@
-/* eslint-disable react/prop-types */
+import React from "react";
+
 const sentimentColor = {
   POSITIVE: "lightgreen",
   NEGATIVE: "pink",
@@ -6,9 +7,6 @@ const sentimentColor = {
 };
 
 const Highlighted = ({ text, sentiment, entities }) => {
-  //text= " Ted Confrence was great!"
-  //entities = [{text:"Ted Confrence" , entitiy_type : "event "}]
-
   const entityText = entities.map((e) => e.text);
   const parts = text.split(new RegExp(`(${entityText.join("|")})`, "g"));
   return (

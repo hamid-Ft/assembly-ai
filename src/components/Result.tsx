@@ -1,8 +1,8 @@
 import Highlighted from "./Highlighted";
 import Topics from "./Topics";
 import Speakers from "./Speakers";
+import React from "react";
 
-/* eslint-disable react/prop-types */
 const Result = ({ transcript }) => {
   return (
     <div>
