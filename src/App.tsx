@@ -6,7 +6,6 @@ function App() {
   return (
     <>
       <AudioRecorder />
-      <div style={{ height: "5rem", background: "white" }}></div>
     </>
   );
 }
