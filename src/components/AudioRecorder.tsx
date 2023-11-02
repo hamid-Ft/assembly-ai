@@ -123,35 +123,56 @@ const AudioRecorder = () => {
           <Status isLoading={isLoading} status={transcript.status} />
         )}
       </div>
-      <h2>Audio Recorder</h2>
+      <h2 className="font-extrabold py-2">Audio Recorder</h2>
       <main>
         <div style={{ marginBottom: "20px" }}>
           {!permission ? (
-            <button onClick={getMicrophonePermission} type="button">
+            <button
+              className="bg-slate-500 hover:bg-slate-400"
+              onClick={getMicrophonePermission}
+              type="button">
               Get Microphone
             </button>
           ) : null}
           {permission && recordingStatus === "inactive" ? (
-            <button onClick={startRecording} type="button">
+            <button
+              className="bg-slate-500 hover:bg-slate-400"
+              onClick={startRecording}
+              type="button">
               Start Recording
             </button>
           ) : null}
           {recordingStatus === "recording" ? (
-            <button onClick={stopRecording} type="button">
+            <button
+              className="bg-slate-500 hover:bg-slate-400"
+              onClick={stopRecording}
+              type="button">
               Stop Recording
             </button>
           ) : null}
         </div>
         {audio.length > 0 && (
           <div
-            style={{ display: "flex", flexDirection: "column", gap: "2rem" }}>
+            style={{
+              display: "flex",
+              flexDirection: "column",
+              gap: "2rem",
+              alignItems: "center",
+              justifyContent: "center",
+            }}>
             {audio.map((aud, index) => (
               <div key={index} style={{ display: "flex", gap: "2rem" }}>
-                <button type="button" onClick={() => handleUploadAudio(index)}>
+                <button
+                  className="bg-slate-500 hover:bg-slate-400"
+                  type="button"
+                  onClick={() => handleUploadAudio(index)}>
                   Upload
                 </button>
                 <audio key={index} src={aud.url} controls></audio>
-                <button type="button" onClick={() => handleRemoveAudio(index)}>
+                <button
+                  className="bg-slate-500 hover:bg-slate-400"
+                  type="button"
+                  onClick={() => handleRemoveAudio(index)}>
                   Remove
                 </button>
               </div>
