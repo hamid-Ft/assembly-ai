@@ -1,4 +1,5 @@
-// eslint-disable-next-line react/prop-types
+import React from "react";
+
 const Status = ({ isLoading, status }) => {
   return (
     <div>
