@@ -1,19 +1,9 @@
 import { useState, useRef, useEffect } from "react";
-import axios from "axios";
 import Status from "./Status";
 import Result from "./Result";
 import React from "react";
 import "../types/asyncapi";
-
-const assemblyAPI = axios.create({
-  baseURL: "https://api.assemblyai.com/v2",
-  headers: {
-    authorization: import.meta.env.VITE_API_KEY,
-    "content-type": "application/json",
-  },
-});
-
-const mimeType = "audio/webm";
+import { assemblyAPI } from "../core/http-service";
 
 const AudioRecorder = () => {
   const [permission, setPermission] = useState(false);
@@ -46,7 +36,7 @@ const AudioRecorder = () => {
   const startRecording = async () => {
     setRecordingStatus("recording");
     const media = new MediaRecorder(stream, {
-      mimeType: mimeType,
+      mimeType: "audio/webm",
     });
     mediaRecorder.current = media;
     mediaRecorder.current.start();
@@ -65,7 +55,7 @@ const AudioRecorder = () => {
     setRecordingStatus("inactive");
     mediaRecorder.current?.stop();
     mediaRecorder.current!.onstop = () => {
-      const audioBlob = new Blob(audioChunks, { type: mimeType });
+      const audioBlob = new Blob(audioChunks, { type: "audio/webm" });
       const audioUrl = URL.createObjectURL(audioBlob);
       setAudio((audio) => [...audio, { url: audioUrl, blob: audioBlob }]);
       setAudioChunks([]);
