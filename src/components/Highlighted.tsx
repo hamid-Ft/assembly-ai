@@ -1,4 +1,12 @@
 import React from "react";
+import { SentimentAnalysisResults, Entities } from "./AudioRecorder";
+
+type Sentiment = SentimentAnalysisResults["sentiment"];
+interface HighlightedProps {
+  text: string;
+  sentiment: Sentiment;
+  entities: Entities[];
+}
 
 const sentimentColor = {
   POSITIVE: "lightgreen",
@@ -6,7 +14,7 @@ const sentimentColor = {
   NEUTRAL: "lightgray",
 };
 
-const Highlighted = ({ text, sentiment, entities }) => {
+const Highlighted = ({ text, sentiment, entities }: HighlightedProps) => {
   const entityText = entities.map((e) => e.text);
   const parts = text.split(new RegExp(`(${entityText.join("|")})`, "g"));
   return (

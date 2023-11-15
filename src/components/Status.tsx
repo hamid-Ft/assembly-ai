@@ -1,6 +1,11 @@
 import React from "react";
 
-const Status = ({ isLoading, status }) => {
+interface StatusProps {
+  isLoading: boolean;
+  status: string;
+}
+
+const Status = ({ isLoading, status }: StatusProps) => {
   return (
     <div>
       <p>
