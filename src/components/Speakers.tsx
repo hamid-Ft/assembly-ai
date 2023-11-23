@@ -1,5 +1,4 @@
-import React from "react";
-import { Transcript } from "./AudioRecorder";
+import type { Transcript } from './AudioRecorder';
 const Speakers = ({ transcript }: { transcript: Transcript }) => {
   return (
     <div>
@@ -7,9 +6,7 @@ const Speakers = ({ transcript }: { transcript: Transcript }) => {
       <div>
         {transcript.utterances?.map((utterance) => (
           <div key={utterance.start}>
-            <span style={{ fontWeight: "bolder", paddingRight: "8px" }}>
-              {utterance.speaker}:
-            </span>
+            <span style={{ fontWeight: 'bolder', paddingRight: '8px' }}>{utterance.speaker}:</span>
             <span>{utterance.text}</span>
           </div>
         ))}

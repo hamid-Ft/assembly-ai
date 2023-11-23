@@ -1,4 +1,3 @@
-import React from "react";
 
 interface StatusProps {
   isLoading: boolean;
@@ -8,11 +7,7 @@ interface StatusProps {
 const Status = ({ isLoading, status }: StatusProps) => {
   return (
     <div>
-      <p>
-        {isLoading
-          ? `Calculating...${status || "uploading "}...`
-          : "Give me audio!"}
-      </p>
+      <p>{isLoading ? `Calculating...${status || 'uploading '}...` : 'Give me audio!'}</p>
     </div>
   );
 };
