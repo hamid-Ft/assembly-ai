@@ -11,7 +11,7 @@ on:
       - reopened
   # Schedule to run weekly (every Monday)
   schedule:
-    - cron: "0 0 * * SAT"
+    - cron: '0 0 * * SAT'
 
 jobs:
   check-code:
