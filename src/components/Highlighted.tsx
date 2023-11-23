@@ -1,4 +1,3 @@
-import React from 'react';
 import type { SentimentAnalysisResults, Entities } from './AudioRecorder';
 
 type Sentiment = SentimentAnalysisResults['sentiment'];

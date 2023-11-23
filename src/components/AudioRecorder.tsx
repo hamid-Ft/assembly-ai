@@ -2,7 +2,6 @@ import { useState, useRef, useEffect } from 'react';
 import axios from 'axios';
 import Status from './Status';
 import Result from './Result';
-import React from 'react';
 
 const assemblyAPI = axios.create({
   baseURL: 'https://api.assemblyai.com/v2',

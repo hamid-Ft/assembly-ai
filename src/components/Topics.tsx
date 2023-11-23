@@ -1,4 +1,3 @@
-import React from 'react';
 import type { Transcript, Summary } from './AudioRecorder';
 
 const Topics = ({ transcript }: { transcript: Transcript }) => {

@@ -1,7 +1,6 @@
 import Highlighted from './Highlighted';
 import Topics from './Topics';
 import Speakers from './Speakers';
-import React from 'react';
 import type { SentimentAnalysisResults, Transcript } from './AudioRecorder';
 
 const Result = ({ transcript }: { transcript: Transcript }) => {
