@@ -1,7 +1,7 @@
 import Highlighted from './Highlighted';
 import Topics from './Topics';
 import Speakers from './Speakers';
-import type { SentimentAnalysisResults, Transcript } from './AudioRecorder';
+import { SentimentAnalysisResults, Transcript } from "../types/transcript";
 
 const Result = ({ transcript }: { transcript: Transcript }) => {
   return (

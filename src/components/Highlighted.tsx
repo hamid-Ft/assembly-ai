@@ -1,4 +1,4 @@
-import type { SentimentAnalysisResults, Entities } from './AudioRecorder';
+import { SentimentAnalysisResults, Entities } from "../types/transcript";
 
 type Sentiment = SentimentAnalysisResults['sentiment'];
 interface HighlightedProps {
