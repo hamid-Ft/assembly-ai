@@ -20,7 +20,8 @@
     "axios": "^1.6.0",
     "jest-environment-jsdom": "^29.7.0",
     "react": "^18.2.0",
-    "react-dom": "^18.2.0"
+    "react-dom": "^18.2.0",
+    "typescript": "^5.3.2"
   },
   "devDependencies": {
     "@testing-library/jest-dom": "^6.1.4",
@@ -44,7 +45,6 @@
     "tailwindcss": "^3.3.5",
     "ts-jest": "^29.1.1",
     "ts-node": "^10.9.1",
-    "typescript": "^5.2.2",
     "vite": "^4.4.5",
     "vite-plugin-environment": "^1.1.3"
   }
