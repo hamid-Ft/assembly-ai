@@ -21,7 +21,7 @@ WordPress dev , React , tailwind
 
 # Voice Transcription App
 
-![audioRecorder](image/README/1698748830121.png "assemblyAi")
+![audioRecorder](image/README/1698748830121.png 'assemblyAi')
 
 A simple web app that transcribes saved voice input using the [MediaRecorder API](https://developer.mozilla.org/en-US/docs/Web/API/MediaRecorder) supported in browsers with [AssemblyAi](https://www.assemblyai.com/docs/getting-started/transcribe-an-audio-file).
 

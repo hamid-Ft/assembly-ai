@@ -1,5 +1,5 @@
-import React from "react";
-import { Transcript, Summary } from "./AudioRecorder";
+import React from 'react';
+import type { Transcript, Summary } from './AudioRecorder';
 
 const Topics = ({ transcript }: { transcript: Transcript }) => {
   return (
@@ -11,21 +11,20 @@ const Topics = ({ transcript }: { transcript: Transcript }) => {
             .filter(
               (topic) =>
                 transcript.iab_categories_result?.summary &&
-                transcript.iab_categories_result.summary[
-                  topic as keyof Summary
-                ] > 0.7
+                transcript.iab_categories_result.summary[topic as keyof Summary] > 0.7,
             )
             .map((topic) => (
               <span
                 key={topic}
                 style={{
-                  fontSize: "small",
-                  backgroundColor: "blueviolet",
-                  paddingInline: "0.25rem",
-                  borderRadius: "10px",
-                  marginInline: "0.5  rem",
-                }}>
-                {topic.split(">").pop()}
+                  fontSize: 'small',
+                  backgroundColor: 'blueviolet',
+                  paddingInline: '0.25rem',
+                  borderRadius: '10px',
+                  marginInline: '0.5  rem',
+                }}
+              >
+                {topic.split('>').pop()}
               </span>
             ))}
       </div>

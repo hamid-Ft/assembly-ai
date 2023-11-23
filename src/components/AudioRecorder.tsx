@@ -1,18 +1,18 @@
-import { useState, useRef, useEffect } from "react";
-import axios from "axios";
-import Status from "./Status";
-import Result from "./Result";
-import React from "react";
+import { useState, useRef, useEffect } from 'react';
+import axios from 'axios';
+import Status from './Status';
+import Result from './Result';
+import React from 'react';
 
 const assemblyAPI = axios.create({
-  baseURL: "https://api.assemblyai.com/v2",
+  baseURL: 'https://api.assemblyai.com/v2',
   headers: {
     authorization: process.env.VITE_API_KEY,
-    "content-type": "application/json",
+    'content-type': 'application/json',
   },
 });
 
-const mimeType = "audio/webm";
+const mimeType = 'audio/webm';
 
 export interface Entities {
   entity_type: string;
@@ -38,7 +38,7 @@ export interface Utterance {
 export interface SentimentAnalysisResults {
   confidence: number;
   text: string;
-  sentiment: "POSITIVE" | "NEGATIVE" | "NEUTRAL";
+  sentiment: 'POSITIVE' | 'NEGATIVE' | 'NEUTRAL';
 }
 
 export interface Label {
@@ -60,14 +60,14 @@ export interface Summary {
 }
 
 export interface IabCategoriesResult {
-  status: "success" | "unavailable";
+  status: 'success' | 'unavailable';
   results: Result[];
   summary: Summary;
 }
 
 export interface Transcript {
   id: string;
-  status?: "processing" | "queued" | "completed" | "error";
+  status?: 'processing' | 'queued' | 'completed' | 'error';
   text?: string;
   sentiment_analysis_results?: SentimentAnalysisResults[];
   entities?: Entities[];
@@ -78,7 +78,7 @@ export interface Transcript {
 const AudioRecorder = () => {
   const [permission, setPermission] = useState(false);
   const mediaRecorder = useRef<MediaRecorder | undefined>();
-  const [recordingStatus, setRecordingStatus] = useState("inactive");
+  const [recordingStatus, setRecordingStatus] = useState('inactive');
   const [stream, setStream] = useState<MediaStream>(new MediaStream());
 
   /**  @description  { url: string; blob: Blob[] }[] */
@@ -87,9 +87,9 @@ const AudioRecorder = () => {
   const [isLoading, setIsLoading] = useState(false);
 
   /** @details @problem must infer from assemblyAi itself ... ?! */
-  const [transcript, setTranscript] = useState<Transcript>({ id: "" });
+  const [transcript, setTranscript] = useState<Transcript>({ id: '' });
   const getMicrophonePermission = async () => {
-    if ("MediaRecorder" in window) {
+    if ('MediaRecorder' in window) {
       try {
         const mediaStream = await navigator.mediaDevices.getUserMedia({
           audio: true,
@@ -102,22 +102,22 @@ const AudioRecorder = () => {
         }
       }
     } else {
-      alert("The MediaRecorder API is not supported in your browser.");
+      alert('The MediaRecorder API is not supported in your browser.');
     }
   };
 
   const startRecording = async () => {
-    setRecordingStatus("recording");
+    setRecordingStatus('recording');
     const media = new MediaRecorder(stream, {
       mimeType: mimeType,
     });
     mediaRecorder.current = media;
     mediaRecorder.current.start();
 
-    let localAudioChunks: Blob[] = [];
+    const localAudioChunks: Blob[] = [];
 
     mediaRecorder.current.ondataavailable = (event) => {
-      if (typeof event.data === "undefined") return;
+      if (typeof event.data === 'undefined') return;
       if (event.data.size === 0) return;
       localAudioChunks.push(event.data);
     };
@@ -125,7 +125,7 @@ const AudioRecorder = () => {
   };
 
   const stopRecording = () => {
-    setRecordingStatus("inactive");
+    setRecordingStatus('inactive');
     mediaRecorder.current?.stop();
     mediaRecorder.current!.onstop = () => {
       const audioBlob = new Blob(audioChunks, { type: mimeType });
@@ -136,11 +136,9 @@ const AudioRecorder = () => {
   };
   useEffect(() => {
     const interval = setInterval(async () => {
-      if (transcript.id && transcript.status !== "completed" && isLoading) {
+      if (transcript.id && transcript.status !== 'completed' && isLoading) {
         try {
-          const { data: transcriptData } = await assemblyAPI.get(
-            `/transcript/${transcript.id}`
-          );
+          const { data: transcriptData } = await assemblyAPI.get(`/transcript/${transcript.id}`);
           setTranscript({ ...transcript, ...transcriptData });
         } catch (error) {
           console.error(error);
@@ -155,18 +153,15 @@ const AudioRecorder = () => {
   }, [isLoading, transcript]);
 
   const handleRemoveAudio = (index: number) => {
-    const updatedAudio = audio?.splice(0);
-    updatedAudio?.splice(index, 1);
+    const updatedAudio = audio.splice(0);
+    updatedAudio.splice(index, 1);
     setAudio(updatedAudio);
   };
   const handleUploadAudio = async (index: number) => {
     const selectedAudio = audio![index]?.blob;
     setIsLoading(true);
-    const { data: uploadResponse } = await assemblyAPI.post(
-      "/upload",
-      selectedAudio
-    );
-    const { data } = await assemblyAPI.post("/transcript", {
+    const { data: uploadResponse } = await assemblyAPI.post('/upload', selectedAudio);
+    const { data } = await assemblyAPI.post('/transcript', {
       audio_url: uploadResponse.upload_url,
       //features
       sentiment_analysis: true,
@@ -180,36 +175,39 @@ const AudioRecorder = () => {
   return (
     <div>
       <div>
-        {transcript.text && transcript.status === "completed" ? (
+        {transcript.text && transcript.status === 'completed' ? (
           <Result transcript={transcript} />
         ) : (
-          <Status isLoading={isLoading} status={transcript.status || ""} />
+          <Status isLoading={isLoading} status={transcript.status || ''} />
         )}
       </div>
       <h2 className="font-extrabold py-2">Audio Recorder</h2>
       <main>
-        <div style={{ marginBottom: "20px" }}>
+        <div style={{ marginBottom: '20px' }}>
           {!permission ? (
             <button
               className="bg-slate-500 hover:bg-slate-400"
               onClick={getMicrophonePermission}
-              type="button">
+              type="button"
+            >
               Get Microphone
             </button>
           ) : null}
-          {permission && recordingStatus === "inactive" ? (
+          {permission && recordingStatus === 'inactive' ? (
             <button
               className="bg-slate-500 hover:bg-slate-400"
               onClick={startRecording}
-              type="button">
+              type="button"
+            >
               Start Recording
             </button>
           ) : null}
-          {recordingStatus === "recording" ? (
+          {recordingStatus === 'recording' ? (
             <button
               className="bg-slate-500 hover:bg-slate-400"
               onClick={stopRecording}
-              type="button">
+              type="button"
+            >
               Stop Recording
             </button>
           ) : null}
@@ -217,25 +215,28 @@ const AudioRecorder = () => {
         {audio.length > 0 && (
           <div
             style={{
-              display: "flex",
-              flexDirection: "column",
-              gap: "2rem",
-              alignItems: "center",
-              justifyContent: "center",
-            }}>
+              display: 'flex',
+              flexDirection: 'column',
+              gap: '2rem',
+              alignItems: 'center',
+              justifyContent: 'center',
+            }}
+          >
             {audio.map((aud, index) => (
-              <div key={index} style={{ display: "flex", gap: "2rem" }}>
+              <div key={index} style={{ display: 'flex', gap: '2rem' }}>
                 <button
                   className="bg-slate-500 hover:bg-slate-400"
                   type="button"
-                  onClick={() => handleUploadAudio(index)}>
+                  onClick={async () => handleUploadAudio(index)}
+                >
                   Upload
                 </button>
                 <audio key={index} src={aud.url} controls></audio>
                 <button
                   className="bg-slate-500 hover:bg-slate-400"
                   type="button"
-                  onClick={() => handleRemoveAudio(index)}>
+                  onClick={() => handleRemoveAudio(index)}
+                >
                   Remove
                 </button>
               </div>
