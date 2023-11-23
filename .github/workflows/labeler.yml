@@ -1,0 +1,6 @@
+frontend:
+  - 'src/components/*'
+backend:
+  - 'src/server/*'
+documentation:
+  - '**/*.md'
