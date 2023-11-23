@@ -13,6 +13,19 @@
     "format": "prettier --check ./",
     "format:fix": "prettier --write ./"
   },
+  "lint-staged": {
+    "src/**/*.{ts,tsx}": [
+      "eslint --ext .tsx --ext .ts ./src --fix"
+    ],
+    "./src/**": [
+      "prettier --write ."
+    ]
+  },
+  "husky": {
+    "hooks": {
+      "pre-commit": "lint-staged"
+    }
+  },
   "dependencies": {
     "@babel/plugin-syntax-jsx": "^7.23.3",
     "@babel/preset-react": "^7.23.3",
