@@ -1,4 +1,4 @@
-import type { Transcript, Summary } from './AudioRecorder';
+import { Transcript, Summary } from "../types/transcript";
 
 const Topics = ({ transcript }: { transcript: Transcript }) => {
   return (

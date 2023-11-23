@@ -1,4 +1,4 @@
-import type { Transcript } from './AudioRecorder';
+import { Transcript } from "../types/transcript";
 const Speakers = ({ transcript }: { transcript: Transcript }) => {
   return (
     <div>

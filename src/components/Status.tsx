@@ -1,9 +1,5 @@
 
-interface StatusProps {
-  isLoading: boolean;
-  status: string;
-}
-
+import { StatusProps } from "../types/transcript";
 const Status = ({ isLoading, status }: StatusProps) => {
   return (
     <div>
