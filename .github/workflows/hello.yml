@@ -1,0 +1,11 @@
+name: 'Hello'
+
+on:
+  workflow_dispatch:
+
+jobs:
+  hello:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: action/checkout@v2
+      - uses: ./.github/action/action.yml
