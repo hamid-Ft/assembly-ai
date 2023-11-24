@@ -1,4 +1,4 @@
-# Hi, I'm Hamid! 👋
+# gHi, I'm Hamid! 👋
 
 ## 🚀 About Me
 
@@ -67,7 +67,7 @@ Before you begin, ensure you have met the following requirements:
    cd assembly-ai
    ```
 
-3. Install the project dependencies using [npm](https://www.npmjs.com/):
+3. Install the project dependency using [npm](https://www.npmjs.com/):
 
    ```bash
    npm install
