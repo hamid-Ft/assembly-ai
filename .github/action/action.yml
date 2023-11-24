@@ -4,4 +4,4 @@ author: 'Hamid-Ft'
 
 runs:
   using: 'node16'
-  main: 'dist/index.js'
+  main: '.github/action/index.js'
