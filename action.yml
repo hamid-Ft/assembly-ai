@@ -4,4 +4,4 @@ author: 'Hamid-Ft'
 
 runs:
   using: 'node16'
-  main: './action.js'
+  main: 'dist/index.js'
