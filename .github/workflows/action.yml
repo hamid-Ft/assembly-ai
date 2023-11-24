@@ -1,0 +1,7 @@
+name: 'Label ne PRs'
+description: 'add label when new PR opened'
+author: 'Hamid-Ft'
+
+runs:
+  using: 'node16'
+  main: '../action/action.js'
