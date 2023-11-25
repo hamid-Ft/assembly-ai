@@ -1,25 +1,27 @@
 import Highlighted from './Highlighted';
 import Topics from './Topics';
 import Speakers from './Speakers';
-import { SentimentAnalysisResults, Transcript } from "../types/transcript";
+import { SentimentAnalysisResults, Transcript } from '../types/transcript';
 
 const Result = ({ transcript }: { transcript: Transcript }) => {
-  return (
-    <div>
-      <p>
-        {transcript.sentiment_analysis_results?.map((result: SentimentAnalysisResults) => (
-          <Highlighted
-            key={result.confidence}
-            text={result.text}
-            sentiment={result.sentiment}
-            entities={transcript.entities || []}
-          />
-        ))}
-      </p>
-      <Speakers transcript={transcript} />
-      <Topics transcript={transcript} />
-    </div>
-  );
+    return (
+        <div>
+            <p>
+                {transcript.sentiment_analysis_results?.map(
+                    (result: SentimentAnalysisResults) => (
+                        <Highlighted
+                            key={result.confidence}
+                            text={result.text}
+                            sentiment={result.sentiment}
+                            entities={transcript.entities || []}
+                        />
+                    ),
+                )}
+            </p>
+            <Speakers transcript={transcript} />
+            <Topics transcript={transcript} />
+        </div>
+    );
 };
 
 export default Result;

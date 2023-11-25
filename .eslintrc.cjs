@@ -12,7 +12,7 @@ module.exports = {
         'prettier',
     ],
     ignorePatterns: ['dist', '.eslintrc.cjs'],
-    parser: '@typescript-eslint/np',
+    parser: '@typescript-eslint/parser',
     parserOptions: {
         project: './tsconfig.json',
         ecmaFeatures: {
