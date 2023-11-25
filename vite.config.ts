@@ -4,8 +4,8 @@ import EnvironmentPlugin from 'vite-plugin-environment';
 
 // https://vitejs.dev/config/
 export default defineConfig({
-  plugins: [react(), EnvironmentPlugin('all')],
-  server: {
-    port: 3000,
-  },
+    plugins: [react(), EnvironmentPlugin('all')],
+    server: {
+        port: 3000,
+    },
 });

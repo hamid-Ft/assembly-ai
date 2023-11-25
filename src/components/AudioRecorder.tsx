@@ -144,15 +144,7 @@ const AudioRecorder = () => {
           ) : null}
         </div>
         {audio.length > 0 && (
-          <div
-            style={{
-              display: 'flex',
-              flexDirection: 'column',
-              gap: '2rem',
-              alignItems: 'center',
-              justifyContent: 'center',
-            }}
-          >
+          <div className="flex flex-col gap-8 items-center justify-center">
             {audio.map((aud, index) => (
               <div key={index} style={{ display: 'flex', gap: '2rem' }}>
                 <button
