@@ -41,3 +41,6 @@ jobs:
 
             - name: Run code style check
               run: npm run style:all
+
+            - name: Run tests
+              run: npm run test
