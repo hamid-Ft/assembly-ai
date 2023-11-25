@@ -24,6 +24,7 @@ module.exports = {
     settings: { react: { version: 'detect' } },
     plugins: ['prettier', '@typescript-eslint', 'react-refresh'],
     rules: {
+        'linebreak-style': ['error', 'unix'],
         'react/no-danger': 'off', // it's self explainatory that no-danger should be used sparingly
         'react/react-in-jsx-scope': 'off', // next.js does not require react in most components
         'react/prop-types': 'off', // as long as TS strict mode is off this is not required
