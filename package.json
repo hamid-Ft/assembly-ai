@@ -7,6 +7,7 @@
         "dev": "vite",
         "build": "tsc && vite build",
         "test": "jest --detectOpenHandles",
+        "test:watch": "jest --watch",
         "lint": "eslint . --ext ts,tsx --quiet --fix --report-unused-disable-directives --max-warnings 0",
         "format": "prettier --write 'src/**/*.{js,ts,jsx,tsx,json,css}'",
         "preview": "vite preview",
@@ -41,7 +42,7 @@
     "devDependencies": {
         "@testing-library/jest-dom": "^6.1.4",
         "@testing-library/react": "^14.1.0",
-        "@types/jest": "^29.5.8",
+        "@types/jest": "^29.5.10",
         "@types/react": "^18.2.34",
         "@types/react-dom": "^18.2.14",
         "@typescript-eslint/eslint-plugin": "^6.12.0",
@@ -64,6 +65,7 @@
         "postcss": "^8.4.31",
         "prettier": "^3.1.0",
         "prettier-eslint": "^16.1.2",
+        "react-test-renderer": "^18.2.0",
         "tailwindcss": "^3.3.5",
         "ts-jest": "^29.1.1",
         "ts-node": "^10.9.1"

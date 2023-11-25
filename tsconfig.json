@@ -27,5 +27,10 @@
     },
     "include": ["src", "**/*.ts", "**/*.tsx", "**/*.js"],
     "exclude": ["node_modules"],
-    "references": [{ "path": "./tsconfig.node.json" }]
+    "references": [{ "path": "./tsconfig.node.json" }],
+    "globals": {
+        "ts-jest": {
+            "tsconfig": "./tsconfig.json"
+        }
+    }
 }
