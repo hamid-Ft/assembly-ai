@@ -1,0 +1,46 @@
+            - name: Jest Coverage Comment
+  # You may pin to the exact commit or the version.
+  # uses: MishaKav/jest-coverage-comment@f2e8b560403c4fd8234a2b268af3c28ca91e5cc7
+  uses: MishaKav/jest-coverage-comment@v1.0.24
+  with:
+    # GitHub API Access Token
+    github-token: ${{ github.token }}
+    # Main title for the comment
+    title: test coverage report
+    # The location of the coverage-summary of Jest
+    coverage-summary-path: ./coverage/coverage-summary.json
+    # Title for the coverage summary
+    summary-title: Summary
+    # Title for the badge icon
+    badge-title: Coverage
+    # Hide coverage summary report
+    hide-summary: false
+    # Hide the whole comment (use when you need only `output`)
+    hide-comment: false
+    # Remove links to files (useful when summary-report is too big)
+    remove-links-to-files: false
+    # Remove links to lines (useful when summary-report is too big)
+    remove-links-to-lines: false
+    # When false, will update the same comment, otherwise will publish new comment on each run
+    create-new-comment: false
+    # The location of the junitxml path (npm package `jest-junit` should be installed)
+    # junitxml-path: # optional, default is 
+    # Title for summary for junitxml
+    # junitxml-title: # optional, default is 
+    # The location of the coverage.txt (Jest console output)
+    #coverage-path: # optional, default is 
+    # Title for the coverage report
+    coverage-title: Coverage Report
+    # Prefix for path when link to files in comment
+    # coverage-path-prefix: # optional, default is 
+    # Show in report only changed files for this commit, and not all files
+    report-only-changed-files: false
+    # You can pass array of `json-summary.json` files and generate single comment with table of results Single line should look like `Title1, ./path/to/json-summary.json`
+
+    # multiple-files: # optional, default is 
+    # You can pass array of `junit.xml` files and generate single comment with table of results Single line should look like `Title1, ./path/to/junit.xml`
+
+    # multiple-junitxml-files: # optional, default is 
+    # When running in a matrix, pass the matrix value, so each comment will be updated its own comment
+    # unique-id-for-comment: # optional, default is 
+          
