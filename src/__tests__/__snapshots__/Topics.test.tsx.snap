@@ -1,0 +1,18 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Topics component matches snapshot 1`] = `
+<DocumentFragment>
+  <div>
+    <h3>
+      Topics Detected: 
+    </h3>
+    <div>
+      <span
+        style="font-size: small; background-color: blueviolet; padding-inline: 0.25rem; border-radius: 10px; margin-inline: 0.5  rem;"
+      >
+        topic
+      </span>
+    </div>
+  </div>
+</DocumentFragment>
+`;

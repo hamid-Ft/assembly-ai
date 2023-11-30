@@ -8,5 +8,5 @@
     "bracketSameLine": true,
     "arrowParens": "avoid",
     "htmlWhitespaceSensitivity": "css",
-    "endOfLine": "lf"
+    "endOfLine": "auto"
 }

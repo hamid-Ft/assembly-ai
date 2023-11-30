@@ -1,0 +1,21 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`matches snapshot when isLoading is false 1`] = `
+<DocumentFragment>
+  <div>
+    <p>
+      Give me audio!
+    </p>
+  </div>
+</DocumentFragment>
+`;
+
+exports[`matches snapshot when isLoading is true 1`] = `
+<DocumentFragment>
+  <div>
+    <p>
+      Calculating...uploading...
+    </p>
+  </div>
+</DocumentFragment>
+`;
