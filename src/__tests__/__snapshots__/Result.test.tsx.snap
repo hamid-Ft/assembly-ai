@@ -1,0 +1,20 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Speakers component matches snapshot 1`] = `
+<DocumentFragment>
+  <div>
+    <h3>
+      Speakers: 
+    </h3>
+    <div>
+      <div>
+        <span
+          class="font-bolder pr-2"
+        >
+          Speaker 1: Test text
+        </span>
+      </div>
+    </div>
+  </div>
+</DocumentFragment>
+`;

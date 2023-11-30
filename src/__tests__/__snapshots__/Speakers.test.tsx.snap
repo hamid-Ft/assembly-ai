@@ -1,0 +1,27 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`matches snapshot 1`] = `
+<DocumentFragment>
+  <div>
+    <h3>
+      Speakers: 
+    </h3>
+    <div>
+      <div>
+        <span
+          class="font-bolder pr-2"
+        >
+          A: Hello
+        </span>
+      </div>
+      <div>
+        <span
+          class="font-bolder pr-2"
+        >
+          B: Hi
+        </span>
+      </div>
+    </div>
+  </div>
+</DocumentFragment>
+`;
