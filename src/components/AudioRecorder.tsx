@@ -1,27 +1,44 @@
 /* eslint-disable no-console */
 /* eslint-disable no-alert */
 /* eslint-disable react/no-array-index-key */
-import { useState, useRef, useEffect } from 'react';
+import { useRef, useEffect } from 'react';
 import Status from './Status';
 import Result from './Result';
-import { Transcript } from '../types/transcript';
 import assemblyAPI from '../core/assemblyAPI';
+import useAudioStore from '../audioStore';
 
 const mimeType = process.env.VITE_MIMETYPE;
 
 const AudioRecorder = () => {
-    const [permission, setPermission] = useState(false);
+    const {
+        permission,
+        setPermission,
+        recordingStatus,
+        setRecordingStatus,
+        stream,
+        setStream,
+        audio,
+        setAudio,
+        audioChunks,
+        setAudioChunks,
+        isLoading,
+        setIsLoading,
+        transcript,
+        setTranscript,
+    } = useAudioStore();
+
+    // const [permission, setPermission] = useState(false);
     const mediaRecorder = useRef<MediaRecorder | undefined>();
-    const [recordingStatus, setRecordingStatus] = useState('inactive');
-    const [stream, setStream] = useState<MediaStream>(new MediaStream());
+    // const [recordingStatus, setRecordingStatus] = useState('inactive');
+    // const [stream, setStream] = useState<MediaStream>(new MediaStream());
 
-    /**  @description  { url: string; blob: Blob[] }[] */
-    const [audio, setAudio] = useState<{ url: string; blob: Blob }[]>([]);
-    const [audioChunks, setAudioChunks] = useState<Blob[]>([]);
-    const [isLoading, setIsLoading] = useState(false);
+    // /**  @description  { url: string; blob: Blob[] }[] */
+    // const [audio, setAudio] = useState<{ url: string; blob: Blob }[]>([]);
+    // const [audioChunks, setAudioChunks] = useState<Blob[]>([]);
+    // const [isLoading, setIsLoading] = useState(false);
 
-    /** @details @problem must infer from assemblyAi itself ... ?! */
-    const [transcript, setTranscript] = useState<Transcript>({ id: '' });
+    // /** @details @problem must infer from assemblyAi itself ... ?! */
+    // const [transcript, setTranscript] = useState<Transcript>({ id: '' });
     const getMicrophonePermission = async () => {
         if ('MediaRecorder' in window) {
             try {
@@ -64,7 +81,8 @@ const AudioRecorder = () => {
         mediaRecorder.current!.onstop = () => {
             const audioBlob = new Blob(audioChunks, { type: mimeType });
             const audioUrl = URL.createObjectURL(audioBlob);
-            setAudio(aud => [...aud, { url: audioUrl, blob: audioBlob }]);
+            const newAudio = [...audio, { url: audioUrl, blob: audioBlob }];
+            setAudio(newAudio);
             setAudioChunks([]);
         };
     };
@@ -90,7 +108,7 @@ const AudioRecorder = () => {
         }, 1000);
 
         return () => clearInterval(interval);
-    }, [isLoading, transcript]);
+    }, [isLoading, setIsLoading, setTranscript, transcript]);
 
     const handleRemoveAudio = (index: number) => {
         const updatedAudio = audio.splice(0);
