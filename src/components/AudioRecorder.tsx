@@ -134,7 +134,7 @@ const AudioRecorder = () => {
     };
 
     return (
-        <div>
+        <div data-testid="AudioRecorder">
             <div>
                 {transcript.text && transcript.status === 'completed' ? (
                     <Result transcript={transcript} />
