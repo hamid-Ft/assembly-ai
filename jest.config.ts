@@ -1,7 +1,7 @@
 export default {
     preset: 'ts-jest', // Presetting to typescript jest
     testEnvironment: 'jsdom', // Testing environment is jsdom
-
+    setupFiles: ['./jest.setup.ts'],
     transform: {
         '^.+\\.tsx?$': [
             // If the file is a typescript or typescript jsx file transform it using ts-jest
