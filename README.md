@@ -1,4 +1,4 @@
-# gHi, I'm Hamid! 👋
+# Hi, I'm Hamid! 👋
 
 ## 🚀 About Me
 
